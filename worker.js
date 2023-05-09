@@ -3,10 +3,9 @@ const { describe, it, mock, resetState, run } = require('jest-circus');
 const NodeEnvironment = require('jest-environment-node');
 const vm = require('vm');
 const  { expect } = require('expect');
+const { join, dirname, basename } = require('path');
 
 exports.runTest = async (testFile) => {
-    const code = await fs.promises.readFile(testFile, 'utf8');
-
     const testResult = {
         errorMessage: null,
         success: false,
@@ -15,10 +14,20 @@ exports.runTest = async (testFile) => {
 
     try {
         resetState();
-        const { testResults } = await run();
-        testResult.testResults = testResults
-        // testResult.success = testResults.every((result) => !result.errors.length);
-        testResult.success = true;
+
+        const customRequire = (fileName) => {
+            const code = fs.readFileSync(join(dirname(testFile), fileName), 'utf8');
+            const moduleFactory = vm.runInContext(
+                `(function(module, require){${code}})`,
+                environment.getVmContext()
+                );
+
+            const module = { exports: {}};
+            moduleFactory(module, customRequire);
+            
+            return module.exports;
+        }
+
         const environment = new NodeEnvironment.default({
             projectConfig: {
                 testEnvironmentOptions: {
@@ -29,10 +38,13 @@ exports.runTest = async (testFile) => {
                 }
             }
         })
-        vm.runInContext(code, environment.getVmContext());
+        customRequire(basename(testFile));
+        const { testResults } = await run();
+        testResult.testResults = testResults
+        testResult.success = testResults.every((result) => !result.errors.length);
+
     
     } catch (error) {
-        testResult.success = false
         testResult.errorMessage = error;
     }
 

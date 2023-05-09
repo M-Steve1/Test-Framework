@@ -1,5 +1,5 @@
-// const pawpaw = require('./pawpaw.js');
-// const tomato = require('./tomato.js');
+const pawpaw = require('../pawpaw.js');
+const tomato = require('../tomato.js');
 
 describe('Describe test', () => {
     it('works', () => {
