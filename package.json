@@ -12,6 +12,7 @@
   "author": "Modebe Stephen",
   "license": "MIT",
   "dependencies": {
-    "jest-haste-map": "^29.5.0"
+    "jest-haste-map": "^29.5.0",
+    "jest-worker": "^29.5.0"
   }
 }
