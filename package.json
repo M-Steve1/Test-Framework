@@ -1,0 +1,14 @@
+{
+  "name": "test-framework",
+  "version": "1.0.0",
+  "description": "A Basic Test Framework",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Test-Framework"
+  },
+  "author": "Modebe Stephen",
+  "license": "MIT"
+}
