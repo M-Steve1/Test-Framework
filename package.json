@@ -10,5 +10,8 @@
     "url": "Test-Framework"
   },
   "author": "Modebe Stephen",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jest-haste-map": "^29.5.0"
+  }
 }
