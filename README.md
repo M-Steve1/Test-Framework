@@ -7,7 +7,7 @@ Modifiers
 - .not
 - .resolves
 - .rejects
-Matchers
+### Matchers
 - .toBe(value)
 - .toHaveBeenCalled()
 - .toHaveBeenCalledTimes(number)
@@ -44,7 +44,7 @@ Matchers
 - .toThrow(error?)
 - .toThrowErrorMatchingSnapshot(hint?)
 - .toThrowErrorMatchingInlineSnapshot(inlineSnapshot)
-Asymmetric Matchers
+### Asymmetric Matchers
 - expect.anything()
 - expect.any(constructor)
 - expect.arrayContaining(array)
@@ -56,7 +56,7 @@ Asymmetric Matchers
 - expect.not.stringContaining(string)
 - expect.stringMatching(string | regexp)
 - expect.not.stringMatching(string | regexp)
-Assertion Count
+### Assertion Count
 - expect.assertions(number)
 - expect.hasAssertions()
 - Extend Utilities
