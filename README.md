@@ -3,7 +3,7 @@
 
 ### Expect
 - expect(value)
-Modifiers
+### Modifiers
 - .not
 - .resolves
 - .rejects
